@@ -1,6 +1,6 @@
 <?php 
 
-require_once '../lib/FacebookPage.php';
+require_once 'FacebookPage.php';
 
 class FacebookPageTest extends PHPUnit_Framework_TestCase {
 
@@ -14,6 +14,8 @@ class FacebookPageTest extends PHPUnit_Framework_TestCase {
       
       // The request method will be replaced with a configurable test double below
       // The behavior of the other methods is not changed.
+      // If this is not called, all methods will return NULL
+      // Only the methods specified here will be replaced
       ->setMethods(array('request'))
       ->getMock();
 
