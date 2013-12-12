@@ -14,15 +14,24 @@ Here, I stub out the _request_ method so that it doesnt make a network call. I m
 
 See di/FacebookPageTest.php
 
-Here I create a mock for the FileConnector class. The mock object's _get()_ method is configured to return some static JSON.
+Here I create a mock for the FileConnector class. The mock object's _get()_ method is configured with some expectations. It must be called _with()_ the correct url and it _will()_ return some static JSON.
 
 
 ### Dependency Injection with Interfaces
 
 See di-interfaces/FacebookPageTest.php
 
-Here I create a mock object that implements RemoteConnectorInterface. The mock object's _get()_ method is configured to return some static JSON.
+Similar to the previous example, here I create a mock object that implements RemoteConnectorInterface. Now, anything that implements this interface can be injected into the FacebookPage class as a dependency.
 
+### References
+
+* [with()](http://phpunit.de/manual/current/en/test-doubles.html#test-doubles.mock-objects.examples.SubjectTest2.php)
+* will()
+	* $this->returnValue($someValue)
+* expects()
+	* $this->once()
+	* $this->any()
+	* $this->exactly(4)
 
 ### Tips
 

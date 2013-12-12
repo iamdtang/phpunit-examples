@@ -9,8 +9,8 @@ class FacebookPageTest extends PHPUnit_Framework_TestCase {
 		$partialMock = $this
       ->getMockBuilder('FacebookPage')
       
-      // any page could be passed in since test wont make network call
-      ->setConstructorArgs(array('pepsi'))
+      // any page could be passed in since the test wont make network call
+      ->setConstructorArgs(array('cocacola'))
       
       // The request method will be replaced with a configurable test double below
       // The behavior of the other methods is not changed.
@@ -19,9 +19,12 @@ class FacebookPageTest extends PHPUnit_Framework_TestCase {
       ->setMethods(array('request'))
       ->getMock();
 
+    // the request method must be called with the right facebook graph endpoint
+    // the request method will return a static json value
     $partialMock
       ->expects($this->once())
       ->method('request')
+      ->with('https://graph.facebook.com/cocacola')
       ->will($this->returnValue('{"name": "Coca-Cola", "likes": 77098229}'));
 
 		$this->assertEquals($partialMock->fetch()->getName(), 'Coca-Cola');
